@@ -9,8 +9,9 @@ The system consists of:
 - An [Arduino Ethernet](http://arduino.cc/en/Main/ArduinoBoardEthernet).
 - A relay breakout board of some description.
 
-*If you buy an Arduino Ethernet rather han just an Arduino Uno with an Ethernet Shield, remember that you will be needing an [FTDI Basic breakout - 5V](https://www.sparkfun.com/products/9716)*.
+*If you buy an Arduino Ethernet rather han just an Arduino Uno with an Ethernet Shield, remember that you will be needing an [FTDI Basic breakout - 5V](https://www.sparkfun.com/products/9716) to program it since the Arduino Ethernet has no USB port.*
 
+*Also, if you thought you were going to be clever and buy the PoE Ethernet version in the naive belief that all switches support PoE: they don't.  Switches with PoE are rarer than pink Unicorns*.
 
 ### Relay
 
