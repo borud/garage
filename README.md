@@ -4,8 +4,6 @@ This is the software for my garage door opener. It shouldn't be hard to adapt th
 
 The system consists of:
 
-
-
 - An [Arduino Ethernet](http://arduino.cc/en/Main/ArduinoBoardEthernet).
 - A relay breakout board of some description.
 
@@ -21,10 +19,9 @@ If you need to build the circuitry yourself there's lots of resources online.   
 
 ### Dependencies
 
-In order to use the above code you need to install two extra libraries in your Arduino libraries folder:
+In order to use the code you need to install the Webduino library:
 
-- The [TinyWebServer](https://github.com/ovidiucp/TinyWebServer/) library 
-- The [Flash](http://arduiniana.org/libraries/flash/) library (look for download link a bit down the page)
+- The [Webduino](https://github.com/sirleech/Webduino/) library 
 
 If you cannot remember how to install libraries in your Arduino setup there is a handy guide in the official [Arduino documentation on Libraries](http://arduino.cc/en/Guide/Libraries).
 
