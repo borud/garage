@@ -13,6 +13,11 @@
 #include <Ethernet.h>
 #include <WebServer.h>
 
+// Stream operator
+template<class T>
+inline Print &operator <<(Print &obj, T arg)
+{ obj.print(arg); return obj; }
+
 // ========================================================================
 // Configurables
 // ========================================================================
@@ -54,11 +59,12 @@ void blip_relay() {
 void default_cmd(WebServer &server, WebServer::ConnectionType type, char *, bool) {
     server.httpSuccess();
     if (type != WebServer::HEAD) {
-	server.print("<h1>Garage</h1>\n");
-	server.print("Uptime: ");
-	server.print(millis());
-	server.print("\n");
-	server.print("<p><a href=\"/garageDoor\">Garage door</a>");
+        server << "<h1>Garage</h1>\n"
+               << "Uptime: "
+               << millis()
+               << "\n"
+               << "<p><a href=\"/garageDoor\">Garage door</a>"
+            ;
     }
 }
 
@@ -75,14 +81,15 @@ void garage_door_cmd(WebServer& server, WebServer::ConnectionType type, char *, 
     server.httpSuccess("application/json;charset=utf-8", NULL);
     if (type != WebServer::HEAD) {
 	blip_relay();
-	server.print("{\n"
-		     "  status : \"OK\",\n"
-		     "  blipTime : \"");
-	server.print(BLIP_TIME_MILLISECONDS);
-	server.print("\",\n"
-		     "  uptime : \"");
-	server.print(millis());
-	server.print("\"\n}\n");
+	server << "{\n"
+               << "  status : \"OK\",\n"
+               << "  blipTime : \""
+	       << BLIP_TIME_MILLISECONDS
+               << "\",\n"
+               << "  uptime : \""
+               << millis()
+               << "\"\n}\n"
+            ;
     }
 }
 
