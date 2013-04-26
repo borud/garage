@@ -9,9 +9,9 @@
 // This needs to be defined before WebServer.h is included
 #define WEBDUINO_AUTH_REALM "Garage"
 
-#include "SPI.h"
-#include "Ethernet.h"
-#include "WebServer.h"
+#include <SPI.h>
+#include <Ethernet.h>
+#include <WebServer.h>
 
 // ========================================================================
 // Configurables
@@ -72,9 +72,7 @@ void garage_door_cmd(WebServer& server, WebServer::ConnectionType type, char *, 
 	return;
     }
 
-    // TODO(borud): For some reason the response is completely b0rked
-    // if I add a content type here.  Investigate why and fix it.
-    server.httpSuccess();
+    server.httpSuccess("application/json;charset=utf-8", NULL);
     if (type != WebServer::HEAD) {
 	blip_relay();
 	server.print("{\n"
